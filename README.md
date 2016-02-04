@@ -1,2 +1,7 @@
 # json-to-csv
-Convert JSON files to CSV files
+A small script to convert JSON files to CSV files.
+
+Inspired by http://konklone.io/json/.
+
+## TODO
+Allow string conversion without file IO.
