@@ -16,3 +16,5 @@ The JsonConverter is able to convert objects created with `JSON.parse`, as well 
 
 Inspired by http://konklone.io/json/.
 
+## TODO
+* Add arguments to documentation
