@@ -3,11 +3,11 @@ require 'json'
 
 class JsonConverter
   # Generate and return a csv representation of the data
-  def generate_csv(json, headers=true, nil_substitute='')
+  def generate_csv(json, headers=true, nil_substitute='', force_quotes=false)
     csv = convert_to_csv json, nil_substitute
     headers_written = false
 
-    generated_csv = CSV.generate do |output|
+    generated_csv = CSV.generate(force_quotes: force_quotes) do |output|
       csv.each do |row|
         if headers_written === false && headers === true
           output << row.keys && headers_written = true
@@ -21,11 +21,11 @@ class JsonConverter
   end
 
   # Generate a csv representation of the data, then write to file
-  def write_to_csv(json, output_filename='out.csv', headers=true, nil_substitute='')
+  def write_to_csv(json, output_filename='out.csv', headers=true, nil_substitute='', force_quotes=false)
     csv = convert_to_csv json, nil_substitute
     headers_written = false 
 
-    CSV.open(output_filename.to_s, 'w') do |output_file|
+    CSV.open(output_filename.to_s, 'w', force_quotes: force_quotes) do |output_file|
       csv.each do |row|
         if headers_written === false && headers === true
           output_file << row.keys && headers_written = true
